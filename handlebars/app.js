@@ -1,17 +1,24 @@
 const express = require("express");
 const app = express();
-const handlebars = require('express-handlebars')
+const Sequelize = require('sequelize')
+const { engine } = require('express-handlebars'); 
 
 
-// config
+// Config
     // Template Engine
-    app.engine('handlebars', handlebars({defaultlayout: 'main'}))
+    app.engine('handlebars', engine({
+        defaultLayout: 'main',
+        runtimeOptions: {
+            allowProtoPropertiesByDefault: true,
+            allowProtoMethodsByDefault: true,
+        }
+    }));
     app.set('view engine', 'handlebars')
     // SQL connection
-        const Sequelize = require('sequelize')
         
         
-        const sequelize = new Sequelize('chach', 'root', 'REDACTED', {
+        
+        const sequelize = new Sequelize('chach', 'root', 'redacted', {
         
         
             host: "localhost",
@@ -22,6 +29,10 @@ const handlebars = require('express-handlebars')
         
         })
     
+// rotas
+        app.get('/cadastro', function(req, res){
+            res.render('forms')
+        })
 
 app.listen(8081, function(){
     console.log("Rodando! http://localhost:8081")

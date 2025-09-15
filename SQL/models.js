@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize')
 
 
-const sequelize = new Sequelize('chach', 'root', '23010777', {
+const sequelize = new Sequelize('chach', 'root', 'reacted', {
 
 
     host: "localhost",

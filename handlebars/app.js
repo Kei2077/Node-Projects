@@ -33,6 +33,9 @@ const { engine } = require('express-handlebars');
         app.get('/cadastro', function(req, res){
             res.render('forms')
         })
+        app.post('/add', function(req, res){
+            res.send('recebido')
+        })
 
 app.listen(8081, function(){
     console.log("Rodando! http://localhost:8081")
